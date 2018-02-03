@@ -1,6 +1,6 @@
 ﻿namespace QuestionaireGame
 {
-    partial class frm3Answers
+    partial class Form3Answers
     {
         /// <summary>
         /// Required designer variable.
@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+        protected MultipleAnswerQuestion multipleAnswerQuestion;
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.FormClosed += FormClosedHandler;
+
             this.lblQuestion = new System.Windows.Forms.Label();
             this.rbAnswer1 = new System.Windows.Forms.RadioButton();
             this.rbAnswer2 = new System.Windows.Forms.RadioButton();
@@ -40,7 +44,7 @@
             // lblQuestion
             // 
             this.lblQuestion.AutoSize = true;
-            this.lblQuestion.Location = new System.Drawing.Point(12, 45);
+            this.lblQuestion.Location = new System.Drawing.Point(12, 17);
             this.lblQuestion.Name = "lblQuestion";
             this.lblQuestion.Size = new System.Drawing.Size(178, 13);
             this.lblQuestion.TabIndex = 1;
@@ -85,7 +89,7 @@
             this.panel1.Controls.Add(this.rbAnswer3);
             this.panel1.Controls.Add(this.rbAnswer2);
             this.panel1.Controls.Add(this.rbAnswer1);
-            this.panel1.Location = new System.Drawing.Point(15, 84);
+            this.panel1.Location = new System.Drawing.Point(15, 56);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(361, 91);
             this.panel1.TabIndex = 2;
@@ -98,8 +102,9 @@
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // frm3Answers
+            // Form3Answers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,7 +112,7 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblQuestion);
-            this.Name = "frm3Answers";
+            this.Name = "Form3Answers";
             this.Text = "Välj ett svarsalternativ";
             this.Load += new System.EventHandler(this.frm3Answers_Load);
             this.panel1.ResumeLayout(false);
@@ -127,6 +132,7 @@
 
         public void LoadQuestion(MultipleAnswerQuestion multipleAnswerQuestion)
         {
+            this.multipleAnswerQuestion = multipleAnswerQuestion;
             lblQuestion.Text = multipleAnswerQuestion.Question;
             rbAnswer1.Text = multipleAnswerQuestion.AnswerOption1;
             rbAnswer2.Text = multipleAnswerQuestion.AnswerOption2;

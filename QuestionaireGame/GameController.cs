@@ -13,23 +13,42 @@ namespace QuestionaireGame
     {
         private List<MultipleAnswerQuestion> questions;
 
+        private static GameController instance;
+
+        private GameController() { }
+
+        public static GameController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameController();
+                }
+                return instance;
+            }
+        }
+
         public void PlayGame()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
             MultipleAnswerQuestion multipleAnswerQuestion = questions.First<MultipleAnswerQuestion>();
-            frm3Answers frm = new frm3Answers();
+            Form3Answers frm = new Form3Answers();
+
             frm.LoadQuestion(multipleAnswerQuestion);
+
 
             Application.Run(frm);
         }
+
 
         public void InitGame()
         {
             LoadJson();
         }
+
         private void LoadJson()
         {
             using (StreamReader r = new StreamReader("..\\..\\MultipleAnswerQuestions.json"))
@@ -43,5 +62,22 @@ namespace QuestionaireGame
                 }
             }
         }
+
+        public void FormCompleted()
+        {
+            CheckAnswers();
+        }
+        private void CheckAnswers()
+        {
+            foreach (var q in questions)
+            {
+                Console.WriteLine("Correct answer is {0}, your answer is {1}.", q.Answer, q.UserAnswer);
+            }
+            FormReults formReults = new FormReults();
+            formReults.setResults(questions);
+            formReults.ShowDialog();
+        }
+
+
     }
 }

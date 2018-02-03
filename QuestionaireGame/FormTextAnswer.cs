@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuestionaireGame
 {
-    public partial class frmTextAnswer : Form
+    public partial class FormTextAnswer : Form
     {
-        public frmTextAnswer()
+        public FormTextAnswer()
         {
             InitializeComponent();
         }

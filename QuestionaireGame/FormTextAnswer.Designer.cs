@@ -1,6 +1,6 @@
 ﻿namespace QuestionaireGame
 {
-    partial class frmTextAnswer
+    partial class FormTextAnswer
     {
         /// <summary>
         /// Required designer variable.
@@ -58,7 +58,7 @@
             this.lblQuestion.TabIndex = 5;
             this.lblQuestion.Text = "Denna kommer att laddas dynamiskt";
             // 
-            // frmTextAnswer
+            // FormTextAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -66,7 +66,7 @@
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnOk);
-            this.Name = "frmTextAnswer";
+            this.Name = "FormTextAnswer";
             this.Text = "Skriv in rätt svar";
             this.ResumeLayout(false);
             this.PerformLayout();

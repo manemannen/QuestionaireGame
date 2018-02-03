@@ -14,7 +14,7 @@ namespace QuestionaireGame
         [STAThread]
         static void Main()
         {
-            GameController gameController = new GameController();
+            GameController gameController = GameController.Instance;
             gameController.InitGame();
             gameController.PlayGame();
 

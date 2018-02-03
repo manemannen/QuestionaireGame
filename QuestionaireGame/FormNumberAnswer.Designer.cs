@@ -1,6 +1,6 @@
 ﻿namespace QuestionaireGame
 {
-    partial class frmNumberAnswer
+    partial class FormNumberAnswer
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(14, 90);
+            this.tbAnswer.Location = new System.Drawing.Point(14, 67);
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(72, 20);
             this.tbAnswer.TabIndex = 12;
@@ -43,7 +43,7 @@
             // lblQuestion
             // 
             this.lblQuestion.AutoSize = true;
-            this.lblQuestion.Location = new System.Drawing.Point(14, 46);
+            this.lblQuestion.Location = new System.Drawing.Point(14, 26);
             this.lblQuestion.Name = "lblQuestion";
             this.lblQuestion.Size = new System.Drawing.Size(178, 13);
             this.lblQuestion.TabIndex = 10;
@@ -58,7 +58,7 @@
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
-            // frmNumberAnswer
+            // FormNumberAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -66,7 +66,7 @@
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnOk);
-            this.Name = "frmNumberAnswer";
+            this.Name = "FormNumberAnswer";
             this.Text = "Skriv in ett nummer";
             this.ResumeLayout(false);
             this.PerformLayout();

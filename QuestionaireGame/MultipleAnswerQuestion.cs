@@ -60,5 +60,20 @@ namespace QuestionaireGame
                 answer = value;
             }
         }
+
+        protected string userAnswer;
+        public string UserAnswer
+        {
+            get
+            {
+                return userAnswer;
+
+            }
+            set
+            {
+                userAnswer = value;
+            }
+        }
+
     }
 }

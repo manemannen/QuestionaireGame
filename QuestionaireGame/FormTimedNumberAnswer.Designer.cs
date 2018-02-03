@@ -1,6 +1,6 @@
 ﻿namespace QuestionaireGame
 {
-    partial class Form1
+    partial class FormTimedNumberAnswer
     {
         /// <summary>
         /// Required designer variable.
