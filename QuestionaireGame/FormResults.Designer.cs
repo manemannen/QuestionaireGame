@@ -58,6 +58,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ControlBox = false;
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnPlayGame);
             this.Controls.Add(this.listViewResults);

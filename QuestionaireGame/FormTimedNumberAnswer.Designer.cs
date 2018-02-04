@@ -38,7 +38,7 @@
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(12, 74);
+            this.tbAnswer.Location = new System.Drawing.Point(16, 49);
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(72, 20);
             this.tbAnswer.TabIndex = 15;
@@ -46,11 +46,11 @@
             // lblQuestion
             // 
             this.lblQuestion.AutoSize = true;
-            this.lblQuestion.Location = new System.Drawing.Point(12, 30);
+            this.lblQuestion.Location = new System.Drawing.Point(16, 19);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(178, 13);
+            this.lblQuestion.Size = new System.Drawing.Size(13, 13);
             this.lblQuestion.TabIndex = 13;
-            this.lblQuestion.Text = "Denna kommer att laddas dynamiskt";
+            this.lblQuestion.Text = "?";
             // 
             // btnOk
             // 
@@ -65,7 +65,7 @@
             // lblTimeLeftHeader
             // 
             this.lblTimeLeftHeader.AutoSize = true;
-            this.lblTimeLeftHeader.Location = new System.Drawing.Point(12, 106);
+            this.lblTimeLeftHeader.Location = new System.Drawing.Point(16, 83);
             this.lblTimeLeftHeader.Name = "lblTimeLeftHeader";
             this.lblTimeLeftHeader.Size = new System.Drawing.Size(49, 13);
             this.lblTimeLeftHeader.TabIndex = 16;
@@ -74,7 +74,7 @@
             // lblTimeLeft
             // 
             this.lblTimeLeft.AutoSize = true;
-            this.lblTimeLeft.Location = new System.Drawing.Point(68, 106);
+            this.lblTimeLeft.Location = new System.Drawing.Point(69, 83);
             this.lblTimeLeft.Name = "lblTimeLeft";
             this.lblTimeLeft.Size = new System.Drawing.Size(13, 13);
             this.lblTimeLeft.TabIndex = 17;
@@ -85,6 +85,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 233);
+            this.ControlBox = false;
             this.Controls.Add(this.lblTimeLeft);
             this.Controls.Add(this.lblTimeLeftHeader);
             this.Controls.Add(this.tbAnswer);

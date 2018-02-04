@@ -17,8 +17,6 @@ namespace QuestionaireGame
             GameController gameController = GameController.Instance;
             gameController.InitGame();
             gameController.PlayGame();
-
-
         }
     }
 }

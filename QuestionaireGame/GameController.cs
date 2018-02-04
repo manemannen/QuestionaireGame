@@ -15,12 +15,11 @@ namespace QuestionaireGame
      */
     class GameController
     {
-        // the pools of questions that the game can choose a game setup from
+        // the pools of questions that the game can choose a game session from
         private List<MultipleAnswerQuestion> multipleAnswerQuestions;
         private List<NumberAnswerQuestion> numberAnswerQuestions;
         private List<TextAnswerQuestion> textAnswerQuestions;
         private List<TimedNumberAnswerQuestion> timedNumberAnswerQuestions;
-        // TODO lägg de frågetyperna
 
         // The member holding the current game questions. It is from this
         // collection the controller will select the questions to present 
@@ -36,7 +35,6 @@ namespace QuestionaireGame
         private FormNumberAnswer frmNumberAnswers;
         private FormTextAnswer frmTextAnswers;
         private FormTimedNumberAnswer frmTimedNumberAnswers;
-        // TODO  add the rest of the forms here
 
         // The singleton member
         private static GameController instance;
@@ -70,9 +68,6 @@ namespace QuestionaireGame
             frmNumberAnswers = new FormNumberAnswer();
             frmTextAnswers = new FormTextAnswer();
             frmTimedNumberAnswers = new FormTimedNumberAnswer();
-            // TODO add additional forms for the other questions.
-
-
             // make sure the dialogs are hidden since we only want to show them once
             // they contain the current question.
             frmResults.Visible = false;
@@ -80,7 +75,6 @@ namespace QuestionaireGame
             frmNumberAnswers.Visible = false;
             frmTextAnswers.Visible = false;
             frmTimedNumberAnswers.Visible = false;
-            // TODO make sure all dialogs are hidden
         }
 
         /**
@@ -90,9 +84,9 @@ namespace QuestionaireGame
          */
         private void GenerateGameSessionQuestions()
         {
-            //gameSessionQuestions.AddRange(GetRandomQuestions(3, multipleAnswerQuestions));
-            //gameSessionQuestions.AddRange(GetRandomQuestions(3, numberAnswerQuestions));
-            //gameSessionQuestions.AddRange(GetRandomQuestions(3, textAnswerQuestions));
+            gameSessionQuestions.AddRange(GetRandomQuestions(3, multipleAnswerQuestions));
+            gameSessionQuestions.AddRange(GetRandomQuestions(3, numberAnswerQuestions));
+            gameSessionQuestions.AddRange(GetRandomQuestions(3, textAnswerQuestions));
             gameSessionQuestions.AddRange(GetRandomQuestions(1, timedNumberAnswerQuestions));
         }
 
@@ -125,14 +119,15 @@ namespace QuestionaireGame
             currentQuestion = null;
             completedGameSessionQuestions.Clear();
             gameSessionQuestions.Clear();
-            // TODO Generera nya frågor
+            // Generate a new game session
             GenerateGameSessionQuestions();
-
-            // Visa första frågan
+            // Show the first question
             ShowNextGameSessionQuestion();
-
         }
 
+        /**
+         * Show correct form depending on what type of question it is.
+         */
         private void ShowFormFromQuestion(BaseQuestion baseQuestion)
         {
             if (baseQuestion.GetType() == typeof(MultipleAnswerQuestion))
@@ -142,7 +137,6 @@ namespace QuestionaireGame
             }
             else if (baseQuestion.GetType() == typeof(NumberAnswerQuestion))
             {
-                // TODO visa formuläret som visar nummer fråga
                 frmNumberAnswers.LoadQuestion((NumberAnswerQuestion)baseQuestion);
                 frmNumberAnswers.Visible = true;
             }
@@ -161,21 +155,19 @@ namespace QuestionaireGame
 
         public void InitGame()
         {
-            LoadJson();
+            LoadQuestionsFromJson();
         }
 
-        private void LoadJson()
+        /**
+         * Loads the question from external json files.
+         */
+        private void LoadQuestionsFromJson()
         {
             // Load the multiple answer questions
             using (StreamReader r = new StreamReader("..\\..\\MultipleAnswerQuestions.json"))
             {
                 string json = r.ReadToEnd();
                 multipleAnswerQuestions = JsonConvert.DeserializeObject<List<MultipleAnswerQuestion>>(json);
-
-                foreach (var q in multipleAnswerQuestions)
-                {
-                    Console.WriteLine("Question is {0}", q.Question);
-                }
             }
 
             // load the number answer questions
@@ -183,11 +175,6 @@ namespace QuestionaireGame
             {
                 string json = r.ReadToEnd();
                 numberAnswerQuestions = JsonConvert.DeserializeObject<List<NumberAnswerQuestion>>(json);
-
-                foreach (var q in numberAnswerQuestions)
-                {
-                    Console.WriteLine("Question is {0}", q.Question);
-                }
             }
 
             // load the text answer questions
@@ -195,11 +182,6 @@ namespace QuestionaireGame
             {
                 string json = r.ReadToEnd();
                 textAnswerQuestions = JsonConvert.DeserializeObject<List<TextAnswerQuestion>>(json);
-
-                foreach (var q in textAnswerQuestions)
-                {
-                    Console.WriteLine("Question is {0}", q.Question);
-                }
             }
 
 
@@ -208,22 +190,16 @@ namespace QuestionaireGame
             {
                 string json = r.ReadToEnd();
                 timedNumberAnswerQuestions = JsonConvert.DeserializeObject<List<TimedNumberAnswerQuestion>>(json);
-
-                foreach (var q in timedNumberAnswerQuestions)
-                {
-                    Console.WriteLine("Question is {0}", q.Question);
-                }
             }
 
         }
 
+        /**
+         * Sets the answer questions in the result form to be displayed. 
+         */
         private void ShowResults()
         {
-            foreach (var q in completedGameSessionQuestions)
-            {
-                Console.WriteLine("Correct answer is {0}, your answer is {1}.", q.Answer, q.UserAnswer);
-            }
-            frmResults.setResults(completedGameSessionQuestions);
+            frmResults.SetResults(completedGameSessionQuestions);
             frmResults.Visible = true;
         }
 

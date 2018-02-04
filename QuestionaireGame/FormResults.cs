@@ -17,7 +17,7 @@ namespace QuestionaireGame
             InitializeComponent();
         }
 
-        public void setResults(List<BaseQuestion> questions)
+        public void SetResults(List<BaseQuestion> questions)
         {
             listViewResults.Clear();
             listViewResults.View = View.Details;
@@ -26,6 +26,14 @@ namespace QuestionaireGame
             foreach (var q in questions)
             {
                 ListViewItem lvi = new ListViewItem(q.Question);
+                if (q.IsCorrect())
+                {
+                    lvi.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lvi.ForeColor = Color.Red;
+                }
                 lvi.SubItems.Add(q.Answer);
                 lvi.SubItems.Add(q.UserAnswer);
                 items[i] = lvi;

@@ -48,5 +48,10 @@ namespace QuestionaireGame
                 userAnswer = value;
             }
         }
+
+        public bool IsCorrect()
+        {
+            return answer == userAnswer;
+        }
     }
 }

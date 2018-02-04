@@ -44,9 +44,9 @@
             this.lblQuestion.AutoSize = true;
             this.lblQuestion.Location = new System.Drawing.Point(12, 17);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(178, 13);
+            this.lblQuestion.Size = new System.Drawing.Size(13, 13);
             this.lblQuestion.TabIndex = 1;
-            this.lblQuestion.Text = "Denna kommer att laddas dynamiskt";
+            this.lblQuestion.Text = "?";
             // 
             // rbAnswer1
             // 
@@ -106,6 +106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 233);
+            this.ControlBox = false;
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblQuestion);

@@ -36,9 +36,9 @@
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Location = new System.Drawing.Point(14, 90);
+            this.tbAnswer.Location = new System.Drawing.Point(15, 53);
             this.tbAnswer.Name = "tbAnswer";
-            this.tbAnswer.Size = new System.Drawing.Size(361, 20);
+            this.tbAnswer.Size = new System.Drawing.Size(363, 20);
             this.tbAnswer.TabIndex = 8;
             // 
             // btnOk
@@ -54,17 +54,18 @@
             // lblQuestion
             // 
             this.lblQuestion.AutoSize = true;
-            this.lblQuestion.Location = new System.Drawing.Point(14, 46);
+            this.lblQuestion.Location = new System.Drawing.Point(12, 21);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(178, 13);
+            this.lblQuestion.Size = new System.Drawing.Size(13, 13);
             this.lblQuestion.TabIndex = 5;
-            this.lblQuestion.Text = "Denna kommer att laddas dynamiskt";
+            this.lblQuestion.Text = "?";
             // 
             // FormTextAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 233);
+            this.ControlBox = false;
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnOk);
