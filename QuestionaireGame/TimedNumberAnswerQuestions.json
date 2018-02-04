@@ -1,0 +1,13 @@
+﻿[
+  {
+    "question": "7.5 + 7 * 5 = ",
+    "answer": "42.5",
+    "completionTime": 10
+  },
+  {
+    "question": "-5 + (-8) = ",
+    "answer": "-13",
+    "completionTime": 5
+  }
+]
+

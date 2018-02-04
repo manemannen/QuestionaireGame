@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TimedNumberAnswerQuestion.cs" />
+    <Compile Include="TextAnswerQuestion.cs" />
     <Compile Include="FormResults.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +113,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="TimedNumberAnswerQuestions.json" />
+    <None Include="TextAnswerQuestions.json" />
     <None Include="NumberAnswerQuestions.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

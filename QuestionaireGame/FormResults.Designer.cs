@@ -62,6 +62,7 @@
             this.Controls.Add(this.btnPlayGame);
             this.Controls.Add(this.listViewResults);
             this.Name = "FormResults";
+            this.Load += new System.EventHandler(this.FormResults_Load);
             this.ResumeLayout(false);
 
         }

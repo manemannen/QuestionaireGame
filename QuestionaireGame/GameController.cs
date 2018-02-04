@@ -18,6 +18,8 @@ namespace QuestionaireGame
         // the pools of questions that the game can choose a game setup from
         private List<MultipleAnswerQuestion> multipleAnswerQuestions;
         private List<NumberAnswerQuestion> numberAnswerQuestions;
+        private List<TextAnswerQuestion> textAnswerQuestions;
+        private List<TimedNumberAnswerQuestion> timedNumberAnswerQuestions;
         // TODO lägg de frågetyperna
 
         // The member holding the current game questions. It is from this
@@ -31,6 +33,9 @@ namespace QuestionaireGame
         // as a template which is automatically load with the current question.
         private FormResults frmResults;
         private FormMultipleAnswers frmMultipleAnswers;
+        private FormNumberAnswer frmNumberAnswers;
+        private FormTextAnswer frmTextAnswers;
+        private FormTimedNumberAnswer frmTimedNumberAnswers;
         // TODO  add the rest of the forms here
 
         // The singleton member
@@ -62,6 +67,9 @@ namespace QuestionaireGame
         {
             frmResults = new FormResults();
             frmMultipleAnswers = new FormMultipleAnswers();
+            frmNumberAnswers = new FormNumberAnswer();
+            frmTextAnswers = new FormTextAnswer();
+            frmTimedNumberAnswers = new FormTimedNumberAnswer();
             // TODO add additional forms for the other questions.
 
 
@@ -69,6 +77,9 @@ namespace QuestionaireGame
             // they contain the current question.
             frmResults.Visible = false;
             frmMultipleAnswers.Visible = false;
+            frmNumberAnswers.Visible = false;
+            frmTextAnswers.Visible = false;
+            frmTimedNumberAnswers.Visible = false;
             // TODO make sure all dialogs are hidden
         }
 
@@ -79,11 +90,10 @@ namespace QuestionaireGame
          */
         private void GenerateGameSessionQuestions()
         {
-            // TODO get questions from the pools and add to the current game instance questions.
-
-            // EXEMPEL: Plocka en fråga från vår pool till frågesamlingen. Här ska vi plocka
-            // lite olika frågor.
-            gameSessionQuestions.AddRange(multipleAnswerQuestions);
+            //gameSessionQuestions.AddRange(GetRandomQuestions(3, multipleAnswerQuestions));
+            //gameSessionQuestions.AddRange(GetRandomQuestions(3, numberAnswerQuestions));
+            //gameSessionQuestions.AddRange(GetRandomQuestions(3, textAnswerQuestions));
+            gameSessionQuestions.AddRange(GetRandomQuestions(1, timedNumberAnswerQuestions));
         }
 
         /**
@@ -98,7 +108,7 @@ namespace QuestionaireGame
             // Gets first question from the list and also removes it from the game session collection.
             if (gameSessionQuestions.Count<BaseQuestion>() != 0)
             {
-                BaseQuestion baseQuestion = gameSessionQuestions.First<BaseQuestion>();
+                BaseQuestion baseQuestion = GetRandomQuestions(1, gameSessionQuestions).First<BaseQuestion>();                    
                 gameSessionQuestions.Remove(baseQuestion);
                 currentQuestion = baseQuestion;
                 ShowFormFromQuestion(currentQuestion);
@@ -126,14 +136,27 @@ namespace QuestionaireGame
         private void ShowFormFromQuestion(BaseQuestion baseQuestion)
         {
             if (baseQuestion.GetType() == typeof(MultipleAnswerQuestion))
-                frmMultipleAnswers.LoadQuestion((MultipleAnswerQuestion)baseQuestion);
-            frmMultipleAnswers.Visible = true;
             {
+                frmMultipleAnswers.LoadQuestion((MultipleAnswerQuestion)baseQuestion);
+                frmMultipleAnswers.Visible = true;
             }
-            if (baseQuestion.GetType() == typeof(NumberAnswerQuestion))
+            else if (baseQuestion.GetType() == typeof(NumberAnswerQuestion))
             {
                 // TODO visa formuläret som visar nummer fråga
+                frmNumberAnswers.LoadQuestion((NumberAnswerQuestion)baseQuestion);
+                frmNumberAnswers.Visible = true;
             }
+            else if (baseQuestion.GetType() == typeof(TextAnswerQuestion))
+            {
+                frmTextAnswers.LoadQuestion((TextAnswerQuestion)baseQuestion);
+                frmTextAnswers.Visible = true;
+            }
+            else if (baseQuestion.GetType() == typeof(TimedNumberAnswerQuestion))
+            {
+                frmTimedNumberAnswers.LoadQuestion((TimedNumberAnswerQuestion)baseQuestion);
+                frmTimedNumberAnswers.Visible = true;
+            }
+
         }
 
         public void InitGame()
@@ -167,12 +190,30 @@ namespace QuestionaireGame
                 }
             }
 
-
             // load the text answer questions
-            // TODO 
+            using (StreamReader r = new StreamReader("..\\..\\TextAnswerQuestions.json"))
+            {
+                string json = r.ReadToEnd();
+                textAnswerQuestions = JsonConvert.DeserializeObject<List<TextAnswerQuestion>>(json);
+
+                foreach (var q in textAnswerQuestions)
+                {
+                    Console.WriteLine("Question is {0}", q.Question);
+                }
+            }
+
 
             // load the times answer questions
-            // TODO 
+            using (StreamReader r = new StreamReader("..\\..\\TimedNumberAnswerQuestions.json"))
+            {
+                string json = r.ReadToEnd();
+                timedNumberAnswerQuestions = JsonConvert.DeserializeObject<List<TimedNumberAnswerQuestion>>(json);
+
+                foreach (var q in timedNumberAnswerQuestions)
+                {
+                    Console.WriteLine("Question is {0}", q.Question);
+                }
+            }
 
         }
 
@@ -187,5 +228,100 @@ namespace QuestionaireGame
         }
 
 
+        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<MultipleAnswerQuestion> questions)
+        {
+            if (questionCount > questions.Count)
+            {
+                throw new Exception("Not enough questions");
+            }
+            List<BaseQuestion> list = new List<BaseQuestion>();
+            while (list.Count < questionCount)
+            {
+                Random random = new Random();
+                int index = random.Next(0, questions.Count - 1);
+                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
+                if (!list.Contains<BaseQuestion>(question))
+                {
+                    list.Add(question);
+                }
+            }
+            return list;
+        }
+        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<NumberAnswerQuestion> questions)
+        {
+            if (questionCount > questions.Count)
+            {
+                throw new Exception("Not enough questions");
+            }
+            List<BaseQuestion> list = new List<BaseQuestion>();
+            while (list.Count < questionCount)
+            {
+                Random random = new Random();
+                int index = random.Next(0, questions.Count - 1);
+                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
+                if (!list.Contains<BaseQuestion>(question))
+                {
+                    list.Add(question);
+                }
+            }
+            return list;
+        }
+        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<TimedNumberAnswerQuestion> questions)
+        {
+            if (questionCount > questions.Count)
+            {
+                throw new Exception("Not enough questions");
+            }
+            List<BaseQuestion> list = new List<BaseQuestion>();
+            while (list.Count < questionCount)
+            {
+                Random random = new Random();
+                int index = random.Next(0, questions.Count - 1);
+                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
+                if (!list.Contains<BaseQuestion>(question))
+                {
+                    list.Add(question);
+                }
+            }
+            return list;
+        }
+        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<TextAnswerQuestion> questions)
+        {
+            if (questionCount > questions.Count)
+            {
+                throw new Exception("Not enough questions");
+            }
+            List<BaseQuestion> list = new List<BaseQuestion>();
+            while (list.Count < questionCount)
+            {
+                Random random = new Random();
+                int index = random.Next(0, questions.Count - 1);
+                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
+                if (!list.Contains<BaseQuestion>(question))
+                {
+                    list.Add(question);
+                }
+            }
+            return list;
+        }
+        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<BaseQuestion> questions)
+        {
+            if (questionCount > questions.Count)
+            {
+                throw new Exception("Not enough questions");
+            }
+            List<BaseQuestion> list = new List<BaseQuestion>();
+            while (list.Count < questionCount)
+            {
+                Random random = new Random();
+                int index = random.Next(0, questions.Count - 1);
+                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
+                if (!list.Contains<BaseQuestion>(question))
+                {
+                    list.Add(question);
+                }
+            }
+            return list;
+        }
     }
 }

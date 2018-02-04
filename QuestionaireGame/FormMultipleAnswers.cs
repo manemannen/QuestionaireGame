@@ -31,11 +31,22 @@ namespace QuestionaireGame
             {
                 multipleAnswerQuestion.UserAnswer = rbAnswer3.Text;
             }
+            else
+            {
+                MessageBox.Show("Du måste välja ett alternativ");
+                return;
+            }
+            
             // Hide the control
             Hide();
             // Return the control to the game controller.
             GameController gameController = GameController.Instance;
             gameController.ShowNextGameSessionQuestion();
+        }
+
+        private void FormMultipleAnswers_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
         }
     }
 }

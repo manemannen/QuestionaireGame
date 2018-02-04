@@ -2,6 +2,7 @@
 {
     partial class FormTextAnswer
     {
+        private TextAnswerQuestion textAnswerQuestion;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -48,6 +49,7 @@
             this.btnOk.TabIndex = 7;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // lblQuestion
             // 
@@ -68,6 +70,7 @@
             this.Controls.Add(this.btnOk);
             this.Name = "FormTextAnswer";
             this.Text = "Skriv in rätt svar";
+            this.Load += new System.EventHandler(this.FormTextAnswer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,5 +81,12 @@
         private System.Windows.Forms.TextBox tbAnswer;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Label lblQuestion;
+
+        public void LoadQuestion(TextAnswerQuestion textAnswerQuestion)
+        {
+            this.textAnswerQuestion = textAnswerQuestion;
+            lblQuestion.Text = textAnswerQuestion.Question;
+            tbAnswer.Text = "";
+        }
     }
 }

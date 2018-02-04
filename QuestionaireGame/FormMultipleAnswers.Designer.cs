@@ -101,7 +101,7 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // Form3Answers
+            // FormMultipleAnswers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -109,8 +109,9 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblQuestion);
-            this.Name = "Form3Answers";
+            this.Name = "FormMultipleAnswers";
             this.Text = "Välj ett svarsalternativ";
+            this.Load += new System.EventHandler(this.FormMultipleAnswers_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -133,6 +134,10 @@
             rbAnswer1.Text = multipleAnswerQuestion.AnswerOption1;
             rbAnswer2.Text = multipleAnswerQuestion.AnswerOption2;
             rbAnswer3.Text = multipleAnswerQuestion.AnswerOption3;
+            rbAnswer1.Checked = false;
+            rbAnswer2.Checked = false;
+            rbAnswer3.Checked = false;
+
         }
     }
 }

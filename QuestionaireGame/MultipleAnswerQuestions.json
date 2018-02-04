@@ -1,25 +1,31 @@
 ﻿[
-	{
-		"question": "Vilken färg har solen?",
-		"answerOption1": "Gul",
-		"answerOption2": "Blå",
-		"answerOption3": "Grön",
-		"answer": "Gul"
-	},
-	{
-		"question": "Vilket djur är störst?",
-		"answerOption1": "Musen",
-		"answerOption2": "Elefanten",
-		"answerOption3": "Blåvalen",
-		"answer": "Blåvalen"
-	},
-	{
-		"question": "Vilken dag är det imorgon om fredag var för två dagar sedan?",
-		"answerOption1": "Tisdag",
-		"answerOption2": "Lördag",
-		"answerOption3": "Måndag",
-		"answer": "Måndag"
-	}
-
+  {
+    "question": "Vilken färg har solen?",
+    "answerOption1": "Gul",
+    "answerOption2": "Blå",
+    "answerOption3": "Grön",
+    "answer": "Gul"
+  },
+  {
+    "question": "Vilket djur är störst?",
+    "answerOption1": "Musen",
+    "answerOption2": "Elefanten",
+    "answerOption3": "Blåvalen",
+    "answer": "Blåvalen"
+  },
+  {
+    "question": "Vilken dag är det imorgon om fredag var för två dagar sedan?",
+    "answerOption1": "Tisdag",
+    "answerOption2": "Lördag",
+    "answerOption3": "Måndag",
+    "answer": "Måndag"
+  },
+  {
+    "question": "Hur många hjul har en traktor?",
+    "answerOption1": "1",
+    "answerOption2": "3",
+    "answerOption3": "4",
+    "answer": "4"
+  }
 ]
 

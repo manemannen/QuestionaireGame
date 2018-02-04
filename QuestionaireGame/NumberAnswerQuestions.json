@@ -1,7 +1,19 @@
 ﻿[
-	{
-		"question": "Hur många månar har Jupiter?",
-		"answer": "67"
-	}
+  {
+    "question": "Hur många månar har Jupiter?",
+    "answer": "67"
+  },
+  {
+    "question": "Hur många timmar går det på en vecka?",
+    "answer": "168"
+  },
+  {
+    "question": "Vad kommer efter 4?",
+    "answer": "5"
+  },
+  {
+    "question": "Hur många dagar går det på en vecka?",
+    "answer": "7"
+  }
 ]
 

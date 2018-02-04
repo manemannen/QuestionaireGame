@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestionaireGame
 {
-    public class NumberAnswerQuestion : BaseQuestion
+    public class TextAnswerQuestion : BaseQuestion
     {
 
     }

@@ -2,6 +2,7 @@
 {
     partial class FormTimedNumberAnswer
     {
+        private TimedNumberAnswerQuestion timedNumberAnswerQuestion;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -59,6 +60,7 @@
             this.btnOk.TabIndex = 14;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // lblTimeLeftHeader
             // 
@@ -78,7 +80,7 @@
             this.lblTimeLeft.TabIndex = 17;
             this.lblTimeLeft.Text = "?";
             // 
-            // Form1
+            // FormTimedNumberAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -88,9 +90,9 @@
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnOk);
-            this.Name = "Form1";
+            this.Name = "FormTimedNumberAnswer";
             this.Text = "Skriv in ett nummer innan tiden tar slut";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormTimedNumberAnswer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +105,16 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Label lblTimeLeftHeader;
         private System.Windows.Forms.Label lblTimeLeft;
+
+
+        public void LoadQuestion(TimedNumberAnswerQuestion timedNumberAnswerQuestion)
+        {
+            this.timedNumberAnswerQuestion = timedNumberAnswerQuestion;
+            lblQuestion.Text = timedNumberAnswerQuestion.Question;
+            lblTimeLeft.Text = timedNumberAnswerQuestion.CompletionTime.ToString();
+            tbAnswer.Text = "";
+
+            timeLeft = timedNumberAnswerQuestion.CompletionTime;
+        }
     }
 }

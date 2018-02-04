@@ -16,5 +16,25 @@ namespace QuestionaireGame
         {
             InitializeComponent();
         }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            if(tbAnswer.Text == "")
+            {
+                MessageBox.Show("Du måste ge ett svar!");
+                return;
+            }
+            textAnswerQuestion.UserAnswer = tbAnswer.Text;
+            // Hide the control
+            Hide();
+            // Return the control to the game controller.
+            GameController gameController = GameController.Instance;
+            gameController.ShowNextGameSessionQuestion();
+        }
+
+        private void FormTextAnswer_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+        }
     }
 }

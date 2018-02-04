@@ -34,9 +34,9 @@ namespace QuestionaireGame
 
             // Create columns for the items and subitems.
             // Width of -2 indicates auto-size.
-            listViewResults.Columns.Add("Question",-2);
-            listViewResults.Columns.Add("Correct answer",-2);
-            listViewResults.Columns.Add("User answer",-2);
+            listViewResults.Columns.Add("Fråga",350);
+            listViewResults.Columns.Add("Rätt svar",150);
+            listViewResults.Columns.Add("Ditt svar",150);
             listViewResults.Items.AddRange(items);
         }
 
@@ -52,6 +52,11 @@ namespace QuestionaireGame
             gameController.StartNewGameSession();
 
             Visible = false;
+        }
+
+        private void FormResults_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
         }
     }
 }

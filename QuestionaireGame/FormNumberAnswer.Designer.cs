@@ -2,6 +2,7 @@
 {
     partial class FormNumberAnswer
     {
+        private NumberAnswerQuestion numberAnswerQuestion;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -57,6 +58,7 @@
             this.btnOk.TabIndex = 11;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // FormNumberAnswer
             // 
@@ -68,6 +70,7 @@
             this.Controls.Add(this.btnOk);
             this.Name = "FormNumberAnswer";
             this.Text = "Skriv in ett nummer";
+            this.Load += new System.EventHandler(this.FormNumberAnswer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,5 +81,13 @@
         private System.Windows.Forms.TextBox tbAnswer;
         private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.Button btnOk;
+
+        public void LoadQuestion(NumberAnswerQuestion numberAnswerQuestion)
+        {
+            this.numberAnswerQuestion = numberAnswerQuestion;
+            lblQuestion.Text = numberAnswerQuestion.Question;
+            tbAnswer.Text = "";
+        }
+
     }
 }
