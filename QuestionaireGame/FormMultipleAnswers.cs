@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace QuestionaireGame
 {
-    public partial class Form3Answers : Form
+    public partial class FormMultipleAnswers : Form
     {
-        public Form3Answers()
+        public FormMultipleAnswers()
         {
             InitializeComponent();
-        }
-
-        private void frm3Answers_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void lblQuestion_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -40,14 +31,11 @@ namespace QuestionaireGame
             {
                 multipleAnswerQuestion.UserAnswer = rbAnswer3.Text;
             }
-            Close();
-        }
-
-        protected void FormClosedHandler(object sender, FormClosedEventArgs args)
-        {
+            // Hide the control
+            Hide();
+            // Return the control to the game controller.
             GameController gameController = GameController.Instance;
             gameController.FormCompleted();
         }
-
     }
 }

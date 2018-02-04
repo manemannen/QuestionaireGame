@@ -1,6 +1,6 @@
 ﻿namespace QuestionaireGame
 {
-    partial class Form3Answers
+    partial class FormMultipleAnswers
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FormClosed += FormClosedHandler;
-
             this.lblQuestion = new System.Windows.Forms.Label();
             this.rbAnswer1 = new System.Windows.Forms.RadioButton();
             this.rbAnswer2 = new System.Windows.Forms.RadioButton();
@@ -49,7 +47,6 @@
             this.lblQuestion.Size = new System.Drawing.Size(178, 13);
             this.lblQuestion.TabIndex = 1;
             this.lblQuestion.Text = "Denna kommer att laddas dynamiskt";
-            this.lblQuestion.Click += new System.EventHandler(this.lblQuestion_Click);
             // 
             // rbAnswer1
             // 
@@ -114,7 +111,6 @@
             this.Controls.Add(this.lblQuestion);
             this.Name = "Form3Answers";
             this.Text = "Välj ett svarsalternativ";
-            this.Load += new System.EventHandler(this.frm3Answers_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

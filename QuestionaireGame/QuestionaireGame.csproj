@@ -55,6 +55,7 @@
       <DependentUpon>FormResults.cs</DependentUpon>
     </Compile>
     <Compile Include="GameController.cs" />
+    <Compile Include="NumberAnswerQuestion.cs" />
     <Compile Include="MultipleAnswerQuestion.cs" />
     <Compile Include="BaseQuestion.cs" />
     <Compile Include="FormTimedNumberAnswer.cs">
@@ -69,11 +70,11 @@
     <Compile Include="FormNumberAnswer.Designer.cs">
       <DependentUpon>FormNumberAnswer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3Answers.cs">
+    <Compile Include="FormMultipleAnswers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3Answers.Designer.cs">
-      <DependentUpon>Form3Answers.cs</DependentUpon>
+    <Compile Include="FormMultipleAnswers.Designer.cs">
+      <DependentUpon>FormMultipleAnswers.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTextAnswer.cs">
       <SubType>Form</SubType>
@@ -98,8 +99,8 @@
     <EmbeddedResource Include="FormTextAnswer.resx">
       <DependentUpon>FormTextAnswer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3Answers.resx">
-      <DependentUpon>Form3Answers.cs</DependentUpon>
+    <EmbeddedResource Include="FormMultipleAnswers.resx">
+      <DependentUpon>FormMultipleAnswers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +111,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="NumberAnswerQuestions.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

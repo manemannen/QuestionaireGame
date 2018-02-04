@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QuestionaireGame
 {
-    public partial class FormReults : Form
+    public partial class FormResults : Form
     {
-        public FormReults()
+        public FormResults()
         {
             InitializeComponent();
-        }
-
-        private void FormResults_Load(object sender, EventArgs e)
-        {
-
         }
 
         public void setResults(List<MultipleAnswerQuestion> questions)
@@ -38,10 +33,20 @@ namespace QuestionaireGame
 
             // Create columns for the items and subitems.
             // Width of -2 indicates auto-size.
-            listViewResults.Columns.Add("Question");
-            listViewResults.Columns.Add("Correct answer");
-            listViewResults.Columns.Add("User answer");
+            listViewResults.Columns.Add("Question",-2);
+            listViewResults.Columns.Add("Correct answer",-2);
+            listViewResults.Columns.Add("User answer",-2);
             listViewResults.Items.AddRange(items);
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnPlayGame_Click(object sender, EventArgs e)
+        {
+            // TODO tell the game controller to start a new game
         }
     }
 }
