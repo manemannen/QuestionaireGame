@@ -30,8 +30,6 @@ namespace QuestionaireGame
         private FormMultipleAnswers frmMultipleAnswers;
         // TODO  add the rest of the forms here
 
-
-
         // The singleton member
         private static GameController instance;
 
