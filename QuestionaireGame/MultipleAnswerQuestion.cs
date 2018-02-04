@@ -47,33 +47,5 @@ namespace QuestionaireGame
             }
         }
 
-        protected string answer;
-        public string Answer
-        { 
-            get
-            {
-                return answer;
-
-            }
-            set
-            {
-                answer = value;
-            }
-        }
-
-        protected string userAnswer;
-        public string UserAnswer
-        {
-            get
-            {
-                return userAnswer;
-
-            }
-            set
-            {
-                userAnswer = value;
-            }
-        }
-
     }
 }

@@ -17,11 +17,12 @@ namespace QuestionaireGame
             InitializeComponent();
         }
 
-        public void setResults(List<MultipleAnswerQuestion> questions)
+        public void setResults(List<BaseQuestion> questions)
         {
+            listViewResults.Clear();
             listViewResults.View = View.Details;
             int i = 0;
-            ListViewItem[] items = new ListViewItem[3];
+            ListViewItem[] items = new ListViewItem[questions.Count()];
             foreach (var q in questions)
             {
                 ListViewItem lvi = new ListViewItem(q.Question);
@@ -47,6 +48,10 @@ namespace QuestionaireGame
         private void btnPlayGame_Click(object sender, EventArgs e)
         {
             // TODO tell the game controller to start a new game
+            GameController gameController = GameController.Instance;
+            gameController.StartNewGameSession();
+
+            Visible = false;
         }
     }
 }

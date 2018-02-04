@@ -35,7 +35,7 @@ namespace QuestionaireGame
             Hide();
             // Return the control to the game controller.
             GameController gameController = GameController.Instance;
-            gameController.FormCompleted();
+            gameController.ShowNextGameSessionQuestion();
         }
     }
 }

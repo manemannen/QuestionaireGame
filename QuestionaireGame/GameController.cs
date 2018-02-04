@@ -18,11 +18,14 @@ namespace QuestionaireGame
         // the pools of questions that the game can choose a game setup from
         private List<MultipleAnswerQuestion> multipleAnswerQuestions;
         private List<NumberAnswerQuestion> numberAnswerQuestions;
+        // TODO lägg de frågetyperna
 
         // The member holding the current game questions. It is from this
         // collection the controller will select the questions to present 
         // for the user.
-        private List<BaseQuestion> gameInstanceQuestions;
+        private List<BaseQuestion> gameSessionQuestions = new List<BaseQuestion>();
+        private List<BaseQuestion> completedGameSessionQuestions = new List<BaseQuestion>();
+        private BaseQuestion currentQuestion;
 
         // The forms that will display the question and result. We pre create these and use them
         // as a template which is automatically load with the current question.
@@ -51,11 +54,11 @@ namespace QuestionaireGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            prepareForms();
+            PrepareForms();
             Application.Run(frmResults);
         }
 
-        private void prepareForms()
+        private void PrepareForms()
         {
             frmResults = new FormResults();
             frmMultipleAnswers = new FormMultipleAnswers();
@@ -74,18 +77,63 @@ namespace QuestionaireGame
          * the pool of questions according to the game rules and add them
          * to an internal member for the duration of a play session.
          */
-        private void generateGameSessionQuestions() {
+        private void GenerateGameSessionQuestions()
+        {
             // TODO get questions from the pools and add to the current game instance questions.
+
+            // EXEMPEL: Plocka en fråga från vår pool till frågesamlingen. Här ska vi plocka
+            // lite olika frågor.
+            gameSessionQuestions.AddRange(multipleAnswerQuestions);
         }
 
-        public void startNewGameSession()
+        /**
+         * Gets the next question to be displayed for the user.
+         */
+        public void ShowNextGameSessionQuestion()
         {
-            // TODO rensa tidigare frågor
+            if (currentQuestion != null)
+            {
+                completedGameSessionQuestions.Add(currentQuestion);
+            }
+            // Gets first question from the list and also removes it from the game session collection.
+            if (gameSessionQuestions.Count<BaseQuestion>() != 0)
+            {
+                BaseQuestion baseQuestion = gameSessionQuestions.First<BaseQuestion>();
+                gameSessionQuestions.Remove(baseQuestion);
+                currentQuestion = baseQuestion;
+                ShowFormFromQuestion(currentQuestion);
+            }
+            else
+            {
+                ShowResults();
+            }
+        }
 
+        public void StartNewGameSession()
+        {
+            // Clears the previous questions.
+            currentQuestion = null;
+            completedGameSessionQuestions.Clear();
+            gameSessionQuestions.Clear();
             // TODO Generera nya frågor
+            GenerateGameSessionQuestions();
 
             // Visa första frågan
+            ShowNextGameSessionQuestion();
 
+        }
+
+        private void ShowFormFromQuestion(BaseQuestion baseQuestion)
+        {
+            if (baseQuestion.GetType() == typeof(MultipleAnswerQuestion))
+                frmMultipleAnswers.LoadQuestion((MultipleAnswerQuestion)baseQuestion);
+            frmMultipleAnswers.Visible = true;
+            {
+            }
+            if (baseQuestion.GetType() == typeof(NumberAnswerQuestion))
+            {
+                // TODO visa formuläret som visar nummer fråga
+            }
         }
 
         public void InitGame()
@@ -128,19 +176,14 @@ namespace QuestionaireGame
 
         }
 
-        public void FormCompleted()
+        private void ShowResults()
         {
-            CheckAnswers();
-        }
-        private void CheckAnswers()
-        {
-            foreach (var q in multipleAnswerQuestions)
+            foreach (var q in completedGameSessionQuestions)
             {
                 Console.WriteLine("Correct answer is {0}, your answer is {1}.", q.Answer, q.UserAnswer);
             }
-            FormResults formReults = new FormResults();
-            formReults.setResults(multipleAnswerQuestions);
-            formReults.ShowDialog();
+            frmResults.setResults(completedGameSessionQuestions);
+            frmResults.Visible = true;
         }
 
 
