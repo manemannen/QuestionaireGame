@@ -15,6 +15,8 @@ namespace QuestionaireGame
      */
     class GameController
     {
+        // The previous results
+        private List<Result> results;
         // the pools of questions that the game can choose a game session from
         private List<MultipleAnswerQuestion> multipleAnswerQuestions;
         private List<NumberAnswerQuestion> numberAnswerQuestions;
@@ -27,6 +29,7 @@ namespace QuestionaireGame
         private List<BaseQuestion> gameSessionQuestions = new List<BaseQuestion>();
         private List<BaseQuestion> completedGameSessionQuestions = new List<BaseQuestion>();
         private BaseQuestion currentQuestion;
+        private long currentPlaySessionStartTime;
 
         // The forms that will display the question and result. We pre create these and use them
         // as a template which is automatically load with the current question.
@@ -75,6 +78,9 @@ namespace QuestionaireGame
             frmNumberAnswers.Visible = false;
             frmTextAnswers.Visible = false;
             frmTimedNumberAnswers.Visible = false;
+
+            frmResults.SetResults(results);
+
         }
 
         /**
@@ -84,9 +90,9 @@ namespace QuestionaireGame
          */
         private void GenerateGameSessionQuestions()
         {
-            gameSessionQuestions.AddRange(GetRandomQuestions(3, multipleAnswerQuestions));
-            gameSessionQuestions.AddRange(GetRandomQuestions(3, numberAnswerQuestions));
-            gameSessionQuestions.AddRange(GetRandomQuestions(3, textAnswerQuestions));
+            //gameSessionQuestions.AddRange(GetRandomQuestions(3, multipleAnswerQuestions));
+            //gameSessionQuestions.AddRange(GetRandomQuestions(3, numberAnswerQuestions));
+            //gameSessionQuestions.AddRange(GetRandomQuestions(3, textAnswerQuestions));
             gameSessionQuestions.AddRange(GetRandomQuestions(1, timedNumberAnswerQuestions));
         }
 
@@ -109,6 +115,19 @@ namespace QuestionaireGame
             }
             else
             {
+                long totalTimeSpent = TimeSpan.FromTicks(DateTime.UtcNow.Ticks).Seconds - TimeSpan.FromTicks(currentPlaySessionStartTime).Seconds;
+
+                string input = "John Doe";
+                // get the user name
+                ShowInputDialog(ref input);
+
+                Result result = new Result();
+                result.CreatedTime = DateTime.Now;
+                result.Questions = new List<BaseQuestion>(completedGameSessionQuestions);
+                result.UserName = input;
+                result.CompletionTime = totalTimeSpent;
+                results.Add(result);
+                SaveResultsToJson();
                 ShowResults();
             }
         }
@@ -121,6 +140,7 @@ namespace QuestionaireGame
             gameSessionQuestions.Clear();
             // Generate a new game session
             GenerateGameSessionQuestions();
+            currentPlaySessionStartTime = DateTime.UtcNow.Ticks;
             // Show the first question
             ShowNextGameSessionQuestion();
         }
@@ -155,7 +175,41 @@ namespace QuestionaireGame
 
         public void InitGame()
         {
+            LoadResultsFromJson();
             LoadQuestionsFromJson();
+        }
+
+        /**
+         * Loads all the result from an external file.
+         */
+        private void LoadResultsFromJson()
+        {
+            try
+           {
+                using (StreamReader r = new StreamReader("Results.json"))
+                {
+                    string json = r.ReadToEnd();
+                    results = JsonConvert.DeserializeObject<List<Result>>(json);
+                }            
+            }
+            catch (FileNotFoundException)
+            {
+                // the file does not exist so we create an empty collection
+                results = new List<Result>();
+            }
+        }
+
+        /**
+         * Saves all the result to an external file.
+         */
+        private void SaveResultsToJson()
+        {
+            //new StreamWriter("Results.json", true))
+            using (StreamWriter w = File.CreateText("Results.json"))
+            {
+                string json = JsonConvert.SerializeObject(results);
+                w.WriteLine(json);
+            }
         }
 
         /**
@@ -199,14 +253,14 @@ namespace QuestionaireGame
          */
         private void ShowResults()
         {
-            frmResults.SetResults(completedGameSessionQuestions);
+            frmResults.SetResults(results);
             frmResults.Visible = true;
         }
 
 
-        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<MultipleAnswerQuestion> questions)
+        private IEnumerable<BaseQuestion> GetRandomQuestions(int questionCount, IEnumerable<BaseQuestion> questions)
         {
-            if (questionCount > questions.Count)
+            if (questionCount > questions.Count<BaseQuestion>())
             {
                 throw new Exception("Not enough questions");
             }
@@ -214,90 +268,61 @@ namespace QuestionaireGame
             while (list.Count < questionCount)
             {
                 Random random = new Random();
-                int index = random.Next(0, questions.Count - 1);
+                int index = random.Next(0, questions.Count<BaseQuestion>()- 1);
                 BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
                 if (!list.Contains<BaseQuestion>(question))
                 {
                     list.Add(question);
                 }
+            }
+            // we need to copy the questions to not taint the same objects in several consequent games
+            List<BaseQuestion> copies = new List<BaseQuestion>();
+            foreach(BaseQuestion q in copies){
+                copies.Add(q.Copy());
             }
             return list;
         }
-        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<NumberAnswerQuestion> questions)
+
+        // copied from StackOverflow :)
+        private DialogResult ShowInputDialog(ref string input)
         {
-            if (questionCount > questions.Count)
-            {
-                throw new Exception("Not enough questions");
-            }
-            List<BaseQuestion> list = new List<BaseQuestion>();
-            while (list.Count < questionCount)
-            {
-                Random random = new Random();
-                int index = random.Next(0, questions.Count - 1);
-                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
-                if (!list.Contains<BaseQuestion>(question))
-                {
-                    list.Add(question);
-                }
-            }
-            return list;
-        }
-        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<TimedNumberAnswerQuestion> questions)
-        {
-            if (questionCount > questions.Count)
-            {
-                throw new Exception("Not enough questions");
-            }
-            List<BaseQuestion> list = new List<BaseQuestion>();
-            while (list.Count < questionCount)
-            {
-                Random random = new Random();
-                int index = random.Next(0, questions.Count - 1);
-                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
-                if (!list.Contains<BaseQuestion>(question))
-                {
-                    list.Add(question);
-                }
-            }
-            return list;
-        }
-        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<TextAnswerQuestion> questions)
-        {
-            if (questionCount > questions.Count)
-            {
-                throw new Exception("Not enough questions");
-            }
-            List<BaseQuestion> list = new List<BaseQuestion>();
-            while (list.Count < questionCount)
-            {
-                Random random = new Random();
-                int index = random.Next(0, questions.Count - 1);
-                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
-                if (!list.Contains<BaseQuestion>(question))
-                {
-                    list.Add(question);
-                }
-            }
-            return list;
-        }
-        private List<BaseQuestion> GetRandomQuestions(int questionCount, List<BaseQuestion> questions)
-        {
-            if (questionCount > questions.Count)
-            {
-                throw new Exception("Not enough questions");
-            }
-            List<BaseQuestion> list = new List<BaseQuestion>();
-            while (list.Count < questionCount)
-            {
-                Random random = new Random();
-                int index = random.Next(0, questions.Count - 1);
-                BaseQuestion question = questions.ElementAt<BaseQuestion>(index);
-                if (!list.Contains<BaseQuestion>(question))
-                {
-                    list.Add(question);
-                }
-            }
-            return list;
+            System.Drawing.Size size = new System.Drawing.Size(200, 70);
+            Form inputBox = new Form();
+
+            inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            inputBox.ClientSize = size;
+            inputBox.Text = "Ditt namn";
+
+            System.Windows.Forms.TextBox textBox = new TextBox();
+            textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
+            textBox.Location = new System.Drawing.Point(5, 5);
+            textBox.Text = input;
+            inputBox.Controls.Add(textBox);
+
+            Button okButton = new Button();
+            okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            okButton.Name = "okButton";
+            okButton.Size = new System.Drawing.Size(75, 23);
+            okButton.Text = "&OK";
+            okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+            inputBox.Controls.Add(okButton);
+
+            Button cancelButton = new Button();
+            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(75, 23);
+            cancelButton.Text = "&Cancel";
+            cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
+            inputBox.Controls.Add(cancelButton);
+
+            inputBox.AcceptButton = okButton;
+            inputBox.CancelButton = cancelButton;
+
+            inputBox.Left = frmResults.Left;
+            inputBox.Top = frmResults.Top;
+            DialogResult result = inputBox.ShowDialog();
+            input = textBox.Text;
+            return result;
         }
     }
 }

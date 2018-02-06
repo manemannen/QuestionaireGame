@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Result.cs" />
     <Compile Include="TimedNumberAnswerQuestion.cs" />
     <Compile Include="TextAnswerQuestion.cs" />
     <Compile Include="FormResults.cs">

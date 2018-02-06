@@ -13,7 +13,7 @@ namespace QuestionaireGame
     public partial class FormTimedNumberAnswer : Form
 
     {
-        Timer timer = new Timer();
+        private Timer timer = new Timer();
         private int timeLeft;
 
         public FormTimedNumberAnswer()
@@ -22,12 +22,13 @@ namespace QuestionaireGame
             timer.Tick += new EventHandler(TimerTick);
             timer.Interval = (1000) * (1);
             timer.Enabled = true;
-            timer.Start();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
             timedNumberAnswerQuestion.UserAnswer = tbAnswer.Text;
+
+            timer.Stop();
             // Hide the control
             Hide();
             // Return the control to the game controller.

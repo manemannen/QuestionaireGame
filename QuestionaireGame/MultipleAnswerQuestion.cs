@@ -47,5 +47,10 @@ namespace QuestionaireGame
             }
         }
 
+        public override BaseQuestion Copy()
+        {
+            return (BaseQuestion)this.MemberwiseClone();
+        }
+
     }
 }

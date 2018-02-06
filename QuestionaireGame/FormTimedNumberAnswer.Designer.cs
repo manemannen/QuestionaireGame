@@ -114,8 +114,10 @@
             lblQuestion.Text = timedNumberAnswerQuestion.Question;
             lblTimeLeft.Text = timedNumberAnswerQuestion.CompletionTime.ToString();
             tbAnswer.Text = "";
+            tbAnswer.Enabled = true;
 
             timeLeft = timedNumberAnswerQuestion.CompletionTime;
+            timer.Start();
         }
     }
 }

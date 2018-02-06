@@ -47,6 +47,9 @@ namespace QuestionaireGame
         private void FormMultipleAnswers_Load(object sender, EventArgs e)
         {
             this.CenterToScreen();
+            rbAnswer1.Checked = false;
+            rbAnswer2.Checked = false;
+            rbAnswer3.Checked = false;
         }
     }
 }

@@ -122,7 +122,7 @@
     <value>12, 70</value>
   </data>
   <data name="listViewResults.Size" type="System.Drawing.Size, System.Drawing">
-    <value>660, 383</value>
+    <value>781, 383</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="listViewResults.TabIndex" type="System.Int32, mscorlib">
@@ -138,10 +138,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listViewResults.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>11</value>
+  </data>
+  <data name="btnPlayGame.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <data name="btnPlayGame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 467</value>
+    <value>530, 467</value>
   </data>
   <data name="btnPlayGame.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 23</value>
@@ -162,14 +165,17 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnPlayGame.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>10</value>
+  </data>
+  <data name="btnQuit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnQuit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnQuit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>550, 467</value>
+    <value>671, 467</value>
   </data>
   <data name="btnQuit.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 23</value>
@@ -190,6 +196,261 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnQuit.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lblGameCompletedOnHeader.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblGameCompletedOnHeader.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="lblGameCompletedOnHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 44</value>
+  </data>
+  <data name="lblGameCompletedOnHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 13</value>
+  </data>
+  <data name="lblGameCompletedOnHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblGameCompletedOnHeader.Text" xml:space="preserve">
+    <value>Game completed on:</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOnHeader.Name" xml:space="preserve">
+    <value>lblGameCompletedOnHeader</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOnHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOnHeader.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOnHeader.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lblGameCompletedOn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblGameCompletedOn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 44</value>
+  </data>
+  <data name="lblGameCompletedOn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="lblGameCompletedOn.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblGameCompletedOn.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOn.Name" xml:space="preserve">
+    <value>lblGameCompletedOn</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblGameCompletedOn.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnPrevious.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 467</value>
+  </data>
+  <data name="btnPrevious.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="btnPrevious.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnPrevious.Text" xml:space="preserve">
+    <value>Föregående resultat</value>
+  </data>
+  <data name="&gt;&gt;btnPrevious.Name" xml:space="preserve">
+    <value>btnPrevious</value>
+  </data>
+  <data name="&gt;&gt;btnPrevious.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPrevious.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnPrevious.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 467</value>
+  </data>
+  <data name="btnNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="btnNext.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnNext.Text" xml:space="preserve">
+    <value>Nästa resultat</value>
+  </data>
+  <data name="&gt;&gt;btnNext.Name" xml:space="preserve">
+    <value>btnNext</value>
+  </data>
+  <data name="&gt;&gt;btnNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNext.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnNext.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnShowBestResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 467</value>
+  </data>
+  <data name="btnShowBestResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="btnShowBestResult.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnShowBestResult.Text" xml:space="preserve">
+    <value>Visa bästa resultat</value>
+  </data>
+  <data name="&gt;&gt;btnShowBestResult.Name" xml:space="preserve">
+    <value>btnShowBestResult</value>
+  </data>
+  <data name="&gt;&gt;btnShowBestResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnShowBestResult.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnShowBestResult.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblPlayerHeader.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPlayerHeader.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="lblPlayerHeader.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlayerHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 44</value>
+  </data>
+  <data name="lblPlayerHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblPlayerHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblPlayerHeader.Text" xml:space="preserve">
+    <value>Player:</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerHeader.Name" xml:space="preserve">
+    <value>lblPlayerHeader</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerHeader.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerHeader.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblPlayer.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPlayer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblPlayer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>315, 44</value>
+  </data>
+  <data name="lblPlayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="lblPlayer.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="lblPlayer.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="&gt;&gt;lblPlayer.Name" xml:space="preserve">
+    <value>lblPlayer</value>
+  </data>
+  <data name="&gt;&gt;lblPlayer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPlayer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblPlayer.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblCompletionTimeHeader.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCompletionTimeHeader.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="lblCompletionTimeHeader.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCompletionTimeHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>445, 44</value>
+  </data>
+  <data name="lblCompletionTimeHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 13</value>
+  </data>
+  <data name="lblCompletionTimeHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lblCompletionTimeHeader.Text" xml:space="preserve">
+    <value>Tid i sekunder:</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTimeHeader.Name" xml:space="preserve">
+    <value>lblCompletionTimeHeader</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTimeHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTimeHeader.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTimeHeader.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblCompletionTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCompletionTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCompletionTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>543, 44</value>
+  </data>
+  <data name="lblCompletionTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="lblCompletionTime.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="lblCompletionTime.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTime.Name" xml:space="preserve">
+    <value>lblCompletionTime</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTime.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblCompletionTime.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -199,7 +460,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 505</value>
+    <value>805, 505</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Resultat</value>

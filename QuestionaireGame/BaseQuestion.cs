@@ -53,5 +53,13 @@ namespace QuestionaireGame
         {
             return answer == userAnswer;
         }
+
+        /**
+         *  Makes a shallow copy of the question.
+         */
+        public virtual BaseQuestion Copy()
+        {
+            return (BaseQuestion) this.MemberwiseClone(); 
+        }
     }
 }
