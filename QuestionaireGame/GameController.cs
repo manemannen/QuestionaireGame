@@ -30,6 +30,7 @@ namespace QuestionaireGame
         private List<BaseQuestion> completedGameSessionQuestions = new List<BaseQuestion>();
         private BaseQuestion currentQuestion;
         private long currentPlaySessionStartTime;
+        private string userName;
 
         // The forms that will display the question and result. We pre create these and use them
         // as a template which is automatically load with the current question.
@@ -111,20 +112,19 @@ namespace QuestionaireGame
                 BaseQuestion baseQuestion = GetRandomQuestions(1, gameSessionQuestions).First<BaseQuestion>();                    
                 gameSessionQuestions.Remove(baseQuestion);
                 currentQuestion = baseQuestion;
+                // get the user name
+                FormInputUserName f = new FormInputUserName();
+                f.ShowDialog();
+                userName = f.getUserName();
                 ShowFormFromQuestion(currentQuestion);
             }
             else
             {
                 long totalTimeSpent = TimeSpan.FromTicks(DateTime.UtcNow.Ticks).Seconds - TimeSpan.FromTicks(currentPlaySessionStartTime).Seconds;
-
-                string input = "John Doe";
-                // get the user name
-                ShowInputDialog(ref input);
-
                 Result result = new Result();
                 result.CreatedTime = DateTime.Now;
                 result.Questions = new List<BaseQuestion>(completedGameSessionQuestions);
-                result.UserName = input;
+                result.UserName = userName;
                 result.CompletionTime = totalTimeSpent;
                 results.Add(result);
                 SaveResultsToJson();
@@ -281,48 +281,6 @@ namespace QuestionaireGame
                 copies.Add(q.Copy());
             }
             return list;
-        }
-
-        // copied from StackOverflow :)
-        private DialogResult ShowInputDialog(ref string input)
-        {
-            System.Drawing.Size size = new System.Drawing.Size(200, 70);
-            Form inputBox = new Form();
-
-            inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            inputBox.ClientSize = size;
-            inputBox.Text = "Ditt namn";
-
-            System.Windows.Forms.TextBox textBox = new TextBox();
-            textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
-            textBox.Location = new System.Drawing.Point(5, 5);
-            textBox.Text = input;
-            inputBox.Controls.Add(textBox);
-
-            Button okButton = new Button();
-            okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            okButton.Name = "okButton";
-            okButton.Size = new System.Drawing.Size(75, 23);
-            okButton.Text = "&OK";
-            okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
-            inputBox.Controls.Add(okButton);
-
-            Button cancelButton = new Button();
-            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new System.Drawing.Size(75, 23);
-            cancelButton.Text = "&Cancel";
-            cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
-            inputBox.Controls.Add(cancelButton);
-
-            inputBox.AcceptButton = okButton;
-            inputBox.CancelButton = cancelButton;
-
-            inputBox.Left = frmResults.Left;
-            inputBox.Top = frmResults.Top;
-            DialogResult result = inputBox.ShowDialog();
-            input = textBox.Text;
-            return result;
         }
     }
 }

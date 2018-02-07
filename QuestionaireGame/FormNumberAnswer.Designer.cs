@@ -69,6 +69,7 @@
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnOk);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormNumberAnswer";
             this.Text = "Skriv in ett nummer";
             this.Load += new System.EventHandler(this.FormNumberAnswer_Load);

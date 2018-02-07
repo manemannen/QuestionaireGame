@@ -110,6 +110,7 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblQuestion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormMultipleAnswers";
             this.Text = "Välj ett svarsalternativ";
             this.Load += new System.EventHandler(this.FormMultipleAnswers_Load);

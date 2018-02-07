@@ -91,6 +91,7 @@
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnOk);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormTimedNumberAnswer";
             this.Text = "Skriv in ett nummer innan tiden tar slut";
             this.Load += new System.EventHandler(this.FormTimedNumberAnswer_Load);

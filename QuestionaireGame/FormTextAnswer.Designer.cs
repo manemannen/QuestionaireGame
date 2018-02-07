@@ -69,6 +69,7 @@
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnOk);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormTextAnswer";
             this.Text = "Skriv in rätt svar";
             this.Load += new System.EventHandler(this.FormTextAnswer_Load);

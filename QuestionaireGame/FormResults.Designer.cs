@@ -108,7 +108,6 @@
             // 
             resources.ApplyResources(this.lblCompletionTimeHeader, "lblCompletionTimeHeader");
             this.lblCompletionTimeHeader.Name = "lblCompletionTimeHeader";
-            this.lblCompletionTimeHeader.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblCompletionTime
             // 
@@ -132,6 +131,7 @@
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnPlayGame);
             this.Controls.Add(this.listViewResults);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormResults";
             this.Load += new System.EventHandler(this.FormResults_Load);
             this.ResumeLayout(false);
